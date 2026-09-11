@@ -20,6 +20,16 @@ Describe 'Get-Fibonacci' {
     }
 }
 
+Describe 'Get-Factorial' {
+    It 'returns <expected> for N=<n>' -TestCases @(
+        @{ n = 0; expected = 1 }
+        @{ n = 1; expected = 1 }
+        @{ n = 5; expected = 120 }
+    ) {
+        Get-Factorial -N $n | Should -Be $expected
+    }
+}
+
 Describe 'math-tool.ps1 CLI' {
     It 'prints exactly one line "Fibonacci(<n>) = <expected>" for N=<n>' -TestCases @(
         @{ n = 0; expected = 0 }
@@ -30,5 +40,16 @@ Describe 'math-tool.ps1 CLI' {
         $LASTEXITCODE | Should -Be 0
         $output.Count | Should -Be 1
         $output[0] | Should -BeExactly "Fibonacci($n) = $expected"
+    }
+
+    It 'prints exactly one line "Factorial(<n>) = <expected>" for N=<n>' -TestCases @(
+        @{ n = 0; expected = 1 }
+        @{ n = 1; expected = 1 }
+        @{ n = 5; expected = 120 }
+    ) {
+        $output = @(& pwsh -NoLogo -NoProfile -File $script:ScriptPath -Operation factorial -N $n)
+        $LASTEXITCODE | Should -Be 0
+        $output.Count | Should -Be 1
+        $output[0] | Should -BeExactly "Factorial($n) = $expected"
     }
 }
