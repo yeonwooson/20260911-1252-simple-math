@@ -13,6 +13,11 @@ Describe 'Get-Fibonacci' {
     ) {
         Get-Fibonacci -N $n | Should -Be $expected
     }
+
+    It 'does not overflow Int64 for large N (e.g. N=93)' {
+        $expected = [System.Numerics.BigInteger]::Parse('12200160415121876738')
+        Get-Fibonacci -N 93 | Should -Be $expected
+    }
 }
 
 Describe 'math-tool.ps1 CLI' {

@@ -9,15 +9,16 @@ $ErrorActionPreference = 'Stop'
 
 function Get-Fibonacci {
     [CmdletBinding()]
-    [OutputType([long])]
+    [OutputType([System.Numerics.BigInteger])]
     param(
         [Parameter(Mandatory)]
         [ValidateRange(0, [int]::MaxValue)]
         [int]$N
     )
 
-    [long]$previous = 0
-    [long]$current = 1
+    # Use BigInteger accumulators so large N values (e.g. Fibonacci(93)+) don't overflow Int64.
+    [System.Numerics.BigInteger]$previous = 0
+    [System.Numerics.BigInteger]$current = 1
     for ($i = 0; $i -lt $N; $i++) {
         $next = $previous + $current
         $previous = $current
