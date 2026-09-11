@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "campaignId": "50b52813-6559-4aa7-96d2-5062f6aa56e2",
+  "campaignIssueNumber": 1,
+  "campaignShortname": "math-control",
+  "repository": "yeonwooson/20260911-1252-simple-math",
+  "baseBranch": "experiment/shepherd-control",
+  "lessonPropagation": "off",
+  "campaignMetadataDirectory": "1-math-control-remove-before-merge",
+  "lessonsFile": "campaign-lessons.md",
+  "createdBy": {
+    "shepherdTaskVersion": "1.0.3",
+    "stageOutcomeProtocolVersion": 1
+  },
+  "createdAt": "2026-09-11T19:55:22Z"
+}
